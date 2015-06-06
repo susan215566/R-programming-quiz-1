@@ -1,0 +1,57 @@
+---
+title: "R programming Quiz 1"
+author: "Jiaoping"
+date: "June 6, 2015"
+output: html_document
+---
+Question 11: Load dataset into Rstudio 
+```{r,cache=TRUE}
+quizdata<-read.csv("hw1_data-2.csv")
+```
+
+Question 12: extract the first 2 rows of the data frame
+```{r}
+quizdata[1:2,]
+```
+
+Question 13: How many observations are there? 
+```{r}
+nrow(quizdata)
+```
+
+Question 14: Extract the last 2 rows of the data frame
+```{r}
+quizdata[152:153,]
+```
+Question 15: Find the value of Ozone in the 47th row.
+```{r}
+quizdata[47,1]
+```
+Quesiton 16: How many missing values are there in Ozone?
+```{r}
+Ozone<-quizdata$Ozone
+logic<-is.na(Ozone)
+Ozone[logic]
+```
+Quesiton 17: calculate the mean of column Ozone excluding the NA
+```{r}
+mean(Ozone[!logic])
+```
+Quesiton 18: extact the subset of rows of the dataframe where Ozone value are above 31 and  Temp values are above 90. What is the mean of Solar.R in this subset?
+```{r}
+logic2<-complete.cases(quizdata)
+newdata<-quizdata[logic2,]
+newdata2<-newdata[newdata$Ozone >31 & newdata$Temp > 90, ]
+mean(newdata2 $Solar.R)
+```
+Question 19: Find the mean of "Temp" when "Month" is equal to 6.
+```{r}
+newdata3<- quizdata[quizdata$ Month == 6, ]
+mean(newdata3$Temp)
+```
+Question 20: Find the max zone value in the month of May.
+```{r}
+newdata4<-newdata[newdata$Month==5, ]
+max(newdata4$Ozone)
+```
+
